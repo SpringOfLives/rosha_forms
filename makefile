@@ -1,4 +1,4 @@
-run:
+start:
 	python manage.py runserver $(port)
 
 migrations:
