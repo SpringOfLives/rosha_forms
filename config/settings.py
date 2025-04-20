@@ -27,9 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +41,7 @@ INSTALLED_APPS = [
     # Third parties
     "crispy_forms",
     "crispy_tailwind",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Django Debug Toolbar
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -129,13 +130,22 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Crispy forms
 # https://github.com/django-crispy-forms/crispy-tailwind
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+# Django debug toolbar
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
