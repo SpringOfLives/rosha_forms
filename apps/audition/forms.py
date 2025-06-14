@@ -45,10 +45,9 @@ class AuditionForm(FormMixins, forms.ModelForm):
             Field("name", css_class="w-full input-primary"),
             Field(
                 "deadline", "annc_dt", "conc_dt", 
-                template="crispy_tailwind/field.html",
-                css_class="input-primary input-carlendar", 
+                template="crispy_tailwind/datetime_input.html"
             ), 
-            Field("poster"),
+            Field("poster", template="crispy_tailwind/file_input.html"),
 
-            Submit('submit', 'Submit', css_class='button btn-primary'),
+            Submit('submit', 'Submit', css_class='button btn-primary mt-8 mx-auto'),
         )

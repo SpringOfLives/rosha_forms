@@ -46,8 +46,12 @@
         @apply duration-300 transition-all;
     }
 
-    button {
+    button, input[type="file"] {
         @apply cursor-pointer;
+    }
+
+    input[type="file"] {
+        @apply file:cursor-pointer;
     }
 
     h1, h2, h3, h4, h5, h6{
@@ -81,7 +85,7 @@
 @layer components {
 
     .container {
-        @apply max-w-screen-2xl px-8 mx-auto pt-8 text-primary-600;
+        @apply max-w-screen-2xl px-8 mx-auto py-8 text-primary-600;
     }
 
     .btn-primary {
