@@ -84,3 +84,47 @@
         @apply text-white font-bold bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 cursor-pointer;
     }
 }
+
+@layer utilities {
+
+    .input-primary {
+        @apply bg-secondary-50 text-primary-700 focus:ring-4 focus:ring-secondary-200/50 border-0;
+    }
+
+    .input-carlendar {
+        /* @apply ps-12; */
+    }
+
+    .dateinput {
+        /* @apply cursor-pointer; */
+    }
+
+    
+    /* Calendar */
+    
+    /* Every descendant element under selector  */
+    .datepicker {
+        @apply w-auto;
+    }
+    
+    .datepicker * {
+
+        @apply bg-secondary-100 text-primary-600;
+    }
+
+    .datepicker .dow {
+        @apply text-primary-800/80;
+    }
+
+    .datepicker .datepicker-cell {
+        @apply hover:bg-secondary-200/50;
+    }
+
+    .datepicker .datepicker-cell.focused {
+        @apply bg-primary-600! text-secondary-50;
+    }
+
+    .datepicker button {
+        @apply bg-secondary-100! text-primary-600;
+    }
+}
