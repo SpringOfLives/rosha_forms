@@ -46,6 +46,10 @@
         @apply duration-300 transition-all;
     }
 
+    button {
+        @apply cursor-pointer;
+    }
+
     h1, h2, h3, h4, h5, h6{
         @apply text-primary-600;
     }
