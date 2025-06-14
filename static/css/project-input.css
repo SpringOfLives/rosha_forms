@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+/* @source "../../node_modules/flowbite-datepicker"; */
 
 /* For controlling dark-mode */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -30,9 +32,44 @@
 }
 
 @layer base {
-    button, a {
+
+    html {
+        @apply prose;
+    }
+
+    body {
+        @apply bg-secondary-200 min-w-screen;
+    }
+    
+    /* Smoothly animation */
+    button, a, input {
         @apply duration-300 transition-all;
     }
+
+    h1, h2, h3, h4, h5, h6{
+        @apply text-primary-600;
+    }
+
+    form {
+        @apply bg-secondary-100 text-primary-600 p-8 shadow-md mx-auto flex flex-col gap-y-4 w-full;
+    }
+
+    label {
+        @apply font-medium;
+    }
+
+    a {
+        @apply no-underline;
+    }
+
+    input {
+        @apply w-full font-medium cursor-auto;
+    }
+
+    /* Add flex to every form field wrapper */
+    /* Fix margin of label each field is not working */
+    [id^="div_id_"] {
+        @apply flex flex-col w-full;
+    }
+    
 }
-
-
