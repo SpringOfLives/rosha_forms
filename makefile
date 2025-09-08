@@ -14,10 +14,10 @@ shell:
 	python manage.py shell
 
 superuser:
-	python manage.py createsuperuserz
+	python manage.py createsuperuser
 
 css:
-	npx @tailwindcss/cli -i ./static/css/project-input.css -o ./static/css/project.css --watch
+	npx @tailwindcss/cli -i ./static/css/project-input.css -o ./static/css/dist/project.css --watch
 
 format:
 	npx prettier --write $(file)
