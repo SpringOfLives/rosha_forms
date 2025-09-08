@@ -1,20 +1,20 @@
 start:
-	python manage.py runserver $(port)
+	uv run python manage.py runserver $(port)
 
 migrations:
-	python manage.py makemigrations $(app_name)
+	uv run python manage.py makemigrations $(app_name)
 
 migrate:
-	python manage.py migrate $(app_name)
+	uv run python manage.py migrate $(app_name)
 
 startapp:
-	python manage.py startapp $(app_name)
+	uv run python manage.py startapp $(app_name)
 
 shell:
-	python manage.py shell
+	uv run python manage.py shell
 
 superuser:
-	python manage.py createsuperuser
+	uv run python manage.py createsuperuser
 
 css:
 	npx @tailwindcss/cli -i ./static/css/project-input.css -o ./static/css/dist/project.css --watch
