@@ -1,5 +1,5 @@
 from django.db import models
-
+from .utils import INSTRUMENT_TYPE
 from config.utils import datetime_default
 
 
@@ -19,6 +19,15 @@ class Audition(models.Model):
         "concert", null=True, blank=True, default=datetime_default
     )
     poster = models.ImageField(upload_to="audition/posters/")
+    instrument = models.ManyToManyField("Instrument")
 
     def __str__(self):
         return f"{self.id} {self.name}"
+
+class Instrument(models.Model):
+
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=100, choices=INSTRUMENT_TYPE, default="SOLO", verbose_name="instrument_type")
+
+    def __str__(self):
+        return f"{self.name} {self.type}"
