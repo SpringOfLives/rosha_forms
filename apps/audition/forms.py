@@ -42,6 +42,7 @@ class AuditionForm(FormMixins, forms.ModelForm):
         self.helper.layout = Layout(
             HTML("<h1 class='text-primary-700 underline'>Audition Form</h1>"),
             Field("name", css_class="w-full input-primary"),
+            Field("instrument"),
             Field(
                 "deadline",
                 "annc_dt",
