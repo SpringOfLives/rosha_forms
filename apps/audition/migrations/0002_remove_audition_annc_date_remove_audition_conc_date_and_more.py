@@ -5,33 +5,44 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('audition', '0001_initial'),
+        ("audition", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='audition',
-            name='annc_date',
+            model_name="audition",
+            name="annc_date",
         ),
         migrations.RemoveField(
-            model_name='audition',
-            name='conc_date',
+            model_name="audition",
+            name="conc_date",
         ),
         migrations.AddField(
-            model_name='audition',
-            name='annc_dt',
-            field=models.DateTimeField(blank=True, default=config.utils.datetime_default, null=True, verbose_name='announcement date'),
+            model_name="audition",
+            name="annc_dt",
+            field=models.DateTimeField(
+                blank=True,
+                default=config.utils.datetime_default,
+                null=True,
+                verbose_name="announcement date",
+            ),
         ),
         migrations.AddField(
-            model_name='audition',
-            name='conc_dt',
-            field=models.DateTimeField(blank=True, default=config.utils.datetime_default, null=True, verbose_name='concert'),
+            model_name="audition",
+            name="conc_dt",
+            field=models.DateTimeField(
+                blank=True,
+                default=config.utils.datetime_default,
+                null=True,
+                verbose_name="concert",
+            ),
         ),
         migrations.AlterField(
-            model_name='audition',
-            name='deadline',
-            field=models.DateTimeField(blank=True, default=config.utils.datetime_default, null=True),
+            model_name="audition",
+            name="deadline",
+            field=models.DateTimeField(
+                blank=True, default=config.utils.datetime_default, null=True
+            ),
         ),
     ]
