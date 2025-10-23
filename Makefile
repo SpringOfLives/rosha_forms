@@ -5,7 +5,7 @@ migrations:
 	uv run python manage.py makemigrations $(app_name)
 
 migrate:
-	uv run python manage.py migrate $(app_name)
+	uv run python manage.py migrate $(app_name) $(no.)
 
 startapp:
 	uv run python manage.py startapp $(app_name)
@@ -21,3 +21,7 @@ css:
 
 format:
 	npx prettier --write $(file)
+
+install: 
+	uv sync
+	pnpm install

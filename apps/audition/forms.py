@@ -8,10 +8,9 @@ from config.mixins import FormMixins
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field, Column, Row
 
+
 class AuditionForm(FormMixins, forms.ModelForm):
-
     class Meta:
-
         model = Audition
 
         fields = "__all__"
@@ -29,12 +28,12 @@ class AuditionForm(FormMixins, forms.ModelForm):
         }
 
         placeholders = {
-            "deadline": ["Select ", "hh:mm eg. 16:30"], 
-            "annc_dt": ["Select date", "hh:mm eg. 16:30"], 
-            "conc_dt": ["Select date", "hh:mm eg. 16:30"]
+            "deadline": ["Select ", "hh:mm eg. 16:30"],
+            "annc_dt": ["Select date", "hh:mm eg. 16:30"],
+            "conc_dt": ["Select date", "hh:mm eg. 16:30"],
         }
 
-    def __init__(self, *args, **kwargs):    
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.helper = FormHelper()
@@ -43,11 +42,13 @@ class AuditionForm(FormMixins, forms.ModelForm):
         self.helper.layout = Layout(
             HTML("<h1 class='text-primary-700 underline'>Audition Form</h1>"),
             Field("name", css_class="w-full input-primary"),
+            Field("instrument"),
             Field(
-                "deadline", "annc_dt", "conc_dt", 
-                template="crispy_tailwind/datetime_input.html"
-            ), 
+                "deadline",
+                "annc_dt",
+                "conc_dt",
+                template="crispy_tailwind/datetime_input.html",
+            ),
             Field("poster", template="crispy_tailwind/file_input.html"),
-
-            Submit('submit', 'Submit', css_class='button btn-primary mt-8 mx-auto'),
+            Submit("submit", "Submit", css_class="button btn-primary mt-8 mx-auto"),
         )

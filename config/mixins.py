@@ -1,5 +1,6 @@
 from django.forms.widgets import SplitDateTimeWidget
 
+
 class FormMixins:
     """
     A mixin for Django forms to apply placeholders and autocomplete="off"
@@ -21,7 +22,6 @@ class FormMixins:
         placeholders = getattr(self.Meta, "placeholders", {})
 
         for field, placeholder in placeholders.items():
-
             field = self.fields[field]
             widget = field.widget
 
