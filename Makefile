@@ -21,3 +21,7 @@ css:
 
 format:
 	npx prettier --write $(file)
+
+install: 
+	uv sync
+	pnpm install
