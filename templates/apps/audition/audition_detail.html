@@ -1,8 +1,63 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block content %}
+<section class="py-8 antialiased md:py-16 dark:bg-gray-900">
+  <div class="mx-auto px-4 2xl:px-0">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+      <div class="mx-auto max-w-md shrink-0 lg:max-w-lg">
+        <img
+          class="my-0 h-full w-full cursor-pointer object-cover shadow-lg shadow-secondary-500 transition-all duration-500 hover:brightness-80 dark:hidden"
+          src="{{audition.poster.url}}"
+          alt=""
+        />
+        <img
+          class="hidden w-full dark:block"
+          src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg"
+          alt=""
+        />
+      </div>
 
-{% block content %}
-    {{ audition.name }}
-    <img src="{{audition.poster.url}}" class="h-[50vh]">
-    {{}}
+      <div class="mt-6 sm:mt-8 lg:mt-0">
+        <h5>{{ audition.name|upper }}</h5>
+
+        {% comment %} <hr class="my-6 border-primary-600 md:my-8 dark:border-gray-800" /> {% endcomment %}
+        <p class="mb-6">
+          <b>Audition Deadline:</b> {{ audition.annc_dt }}
+        </p>
+        <p class="mb-6">
+          <b>Deadline:</b> {{ audition.deadline }}
+        </p>
+
+        <p class="mb-6">
+          <b>Concert Date:</b> {{ audition.conc_dt }}
+        </p>
+        <div class="mt-6 sm:mt-8 sm:flex sm:items-center sm:gap-4">
+          <a
+            href="#"
+            title=""
+            class="mt-4 flex items-center justify-center gap-x-2 rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:outline-none sm:mt-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            role="button"
+          >
+            <svg
+              class="size-4.5 text-white dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z"
+              />
+            </svg>
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
