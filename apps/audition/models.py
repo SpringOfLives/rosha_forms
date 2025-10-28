@@ -10,7 +10,7 @@ class Audition(models.Model):
     dt stands for date
     """
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     deadline = models.DateTimeField(null=True, blank=True, default=datetime_default)
     annc_dt = models.DateTimeField(
         "announcement date", null=True, blank=True, default=datetime_default
