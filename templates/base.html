@@ -11,7 +11,9 @@
   </head>
   <body class="">
     {% include "components/navbar.html" %}
-    {% block content %}{% endblock content %} 
+    <section class="container">
+      {% block content %}{% endblock content %} 
+    </section>
     {% block javascript %}{% endblock javascript %}
     <script src="{% static "js/flowbite.min.js" %}"></script>
   </body>
