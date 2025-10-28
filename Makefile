@@ -17,10 +17,10 @@ superuser:
 	uv run python manage.py createsuperuser
 
 css:
-	npx @tailwindcss/cli -i ./static/css/project-input.css -o ./static/css/dist/project.css --watch
+	pnpx @tailwindcss/cli -i ./static/css/project-input.css -o ./static/css/dist/project.css --watch
 
 format:
-	npx prettier --write $(file)
+	pnpx prettier --write $(file)
 
 install: 
 	uv sync

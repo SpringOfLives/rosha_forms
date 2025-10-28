@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, FormView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, FormView, DetailView
 from django.urls import reverse_lazy
 
 from .forms import AuditionForm
@@ -15,6 +15,9 @@ class AuditionCreateView(CreateView):
     form_class = AuditionForm
     success_url = "/"
 
+class AuditionDetailView(DetailView):
+    model = Audition
+    template_name = "apps/audition/audition_detail.html"
 
 class AuditionUpdateView: ...
 

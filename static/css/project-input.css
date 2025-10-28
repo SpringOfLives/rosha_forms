@@ -6,133 +6,157 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-    --color-primary-50:  oklch(96.5% 0.015 267.0);
-    --color-primary-100: oklch(92.0% 0.030 267.0);
-    --color-primary-200: oklch(85.0% 0.055 267.0);
-    --color-primary-300: oklch(75.0% 0.080 267.0);
-    --color-primary-400: oklch(65.0% 0.105 267.0);
-    --color-primary-500: oklch(56.0% 0.130 267.0);
-    --color-primary-600: oklch(47.0% 0.120 267.0);
-    --color-primary-700: oklch(39.0% 0.105 267.0);
-    --color-primary-800: oklch(31.0% 0.090 267.0);
-    --color-primary-900: oklch(24.0% 0.070 267.0);
-    --color-primary-950: oklch(15.0% 0.045 267.0);
+  --color-primary-50: oklch(96.5% 0.015 267);
+  --color-primary-100: oklch(92% 0.03 267);
+  --color-primary-200: oklch(85% 0.055 267);
+  --color-primary-300: oklch(75% 0.08 267);
+  --color-primary-400: oklch(65% 0.105 267);
+  --color-primary-500: oklch(56% 0.13 267);
+  --color-primary-600: oklch(47% 0.12 267);
+  --color-primary-700: oklch(39% 0.105 267);
+  --color-primary-800: oklch(31% 0.09 267);
+  --color-primary-900: oklch(24% 0.07 267);
+  --color-primary-950: oklch(15% 0.045 267);
 
-    --color-secondary-50:  oklch(96.5% 0.010 95.0);
-    --color-secondary-100: oklch(92.0% 0.020 95.0);
-    --color-secondary-200: oklch(85.0% 0.035 95.0);
-    --color-secondary-300: oklch(75.0% 0.050 95.0);
-    --color-secondary-400: oklch(65.0% 0.065 95.0);
-    --color-secondary-500: oklch(56.0% 0.075 95.0);
-    --color-secondary-600: oklch(47.0% 0.070 95.0);
-    --color-secondary-700: oklch(39.0% 0.060 95.0);
-    --color-secondary-800: oklch(31.0% 0.050 95.0);
-    --color-secondary-900: oklch(24.0% 0.040 95.0);
-    --color-secondary-950: oklch(15.0% 0.025 95.0);
+  --color-secondary-50: oklch(96.5% 0.01 95);
+  --color-secondary-100: oklch(92% 0.02 95);
+  --color-secondary-200: oklch(85% 0.035 95);
+  --color-secondary-300: oklch(75% 0.05 95);
+  --color-secondary-400: oklch(65% 0.065 95);
+  --color-secondary-500: oklch(56% 0.075 95);
+  --color-secondary-600: oklch(47% 0.07 95);
+  --color-secondary-700: oklch(39% 0.06 95);
+  --color-secondary-800: oklch(31% 0.05 95);
+  --color-secondary-900: oklch(24% 0.04 95);
+  --color-secondary-950: oklch(15% 0.025 95);
 }
 
 @layer base {
+  html {
+    @apply prose;
+  }
 
-    html {
-        @apply prose;
-    }
+  body {
+    @apply min-w-screen bg-secondary-200;
+  }
 
-    body {
-        @apply bg-secondary-200 min-w-screen;
-    }
-    
-    /* Smoothly animation */
-    button, a, input {
-        @apply duration-300 transition-all;
-    }
+  /* Smoothly animation */
+  button,
+  a,
+  input {
+    @apply transition-all duration-300;
+  }
 
-    button, input[type="file"] {
-        @apply cursor-pointer;
-    }
+  button,
+  input[type="file"] {
+    @apply cursor-pointer;
+  }
 
-    input[type="file"] {
-        @apply file:cursor-pointer;
-    }
+  input[type="file"] {
+    @apply file:cursor-pointer;
+  }
 
-    h1, h2, h3, h4, h5, h6{
-        @apply text-primary-600;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-4 leading-none tracking-tight text-primary-700;
+  }
+  h1 {
+    @apply mb-4 font-extrabold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl dark:text-primary-100;
+  }
+  h2 {
+    @apply mb-4 font-extrabold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl dark:text-primary-100;
+  }
+  h3 {
+    @apply mb-4 font-bold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl dark:text-primary-100;
+  }
+  h4 {
+    @apply mb-4 font-bold sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl dark:text-primary-100;
+  }
+  h5 {
+    @apply mb-4 font-bold sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl dark:text-primary-100;
+  }
+  h6 {
+    @apply mb-4 font-bold sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl dark:text-primary-100;
+  }
 
-    form {
-        @apply bg-secondary-100 text-primary-600 p-8 shadow-md mx-auto flex flex-col gap-y-4 w-full;
-    }
+  p {
+    @apply mb-2 font-normal text-primary-800 md:text-base lg:text-lg xl:text-xl dark:text-primary-100;
+  }
 
-    label {
-        @apply font-medium;
-    }
+  form {
+    @apply mx-auto flex w-full flex-col gap-y-4 bg-secondary-100 p-8 text-primary-600 shadow-md;
+  }
 
-    a {
-        @apply no-underline;
-    }
+  label {
+    @apply font-medium;
+  }
 
-    input {
-        @apply w-full font-medium cursor-auto;
-    }
+  a {
+    @apply no-underline;
+  }
 
-    /* Add flex to every form field wrapper */
-    /* Fix margin of label each field is not working */
-    [id^="div_id_"] {
-        @apply flex flex-col w-full;
-    }
-    
+  input {
+    @apply w-full cursor-auto font-medium;
+  }
+}
+
+/* Add flex to every form field wrapper */
+/* Fix margin of label each field is not working */
+[id^="div_id_"] {
+  @apply flex w-full flex-col;
 }
 
 @layer components {
+  .container {
+    @apply mx-auto max-w-screen-2xl py-8 text-primary-600;
+  }
 
-    .container {
-        @apply max-w-screen-2xl px-8 mx-auto py-8 text-primary-600;
-    }
-
-    .btn-primary {
-        @apply text-white font-bold bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 cursor-pointer;
-    }
+  .btn-primary {
+    @apply cursor-pointer rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-primary-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  }
 }
 
 @layer utilities {
+  .input-primary {
+    @apply border-0 bg-secondary-50 text-primary-700 focus:ring-4 focus:ring-secondary-200/50;
+  }
 
-    .input-primary {
-        @apply bg-secondary-50 text-primary-700 focus:ring-4 focus:ring-secondary-200/50 border-0;
-    }
+  .input-carlendar {
+    /* @apply ps-12; */
+  }
 
-    .input-carlendar {
-        /* @apply ps-12; */
-    }
+  .dateinput {
+    /* @apply cursor-pointer; */
+  }
 
-    .dateinput {
-        /* @apply cursor-pointer; */
-    }
+  /* Calendar */
 
-    
-    /* Calendar */
-    
-    /* Every descendant element under selector  */
-    .datepicker {
-        @apply w-auto;
-    }
-    
-    .datepicker * {
+  /* Every descendant element under selector  */
+  .datepicker {
+    @apply w-auto;
+  }
 
-        @apply bg-secondary-100 text-primary-600;
-    }
+  .datepicker * {
+    @apply bg-secondary-100 text-primary-600;
+  }
 
-    .datepicker .dow {
-        @apply text-primary-800/80;
-    }
+  .datepicker .dow {
+    @apply text-primary-800/80;
+  }
 
-    .datepicker .datepicker-cell {
-        @apply hover:bg-secondary-200/50;
-    }
+  .datepicker .datepicker-cell {
+    @apply hover:bg-secondary-200/50;
+  }
 
-    .datepicker .datepicker-cell.focused {
-        @apply bg-primary-600! text-secondary-50;
-    }
+  .datepicker .datepicker-cell.focused {
+    @apply bg-primary-600! text-secondary-50;
+  }
 
-    .datepicker button {
-        @apply bg-secondary-100! text-primary-600;
-    }
+  .datepicker button {
+    @apply bg-secondary-100! text-primary-600;
+  }
 }
