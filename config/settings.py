@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "apps.audition",
+    "apps.auditioner",
     # Third parties
     "crispy_forms",
     "crispy_tailwind",

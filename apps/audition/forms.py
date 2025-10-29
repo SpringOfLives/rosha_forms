@@ -6,7 +6,7 @@ from .models import Audition
 from config.mixins import FormMixins
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, HTML, Field, Column, Row
+from crispy_forms.layout import Layout, Submit, HTML, Field
 
 
 class AuditionForm(FormMixins, forms.ModelForm):
@@ -40,7 +40,7 @@ class AuditionForm(FormMixins, forms.ModelForm):
         self.helper.form_class = "w-4/5"
         self.helper.label_class = "mb-0.5"
         self.helper.layout = Layout(
-            HTML("<h1 class='text-primary-700 underline'>Audition Form</h1>"),
+            HTML("<h4 class='text-primary-700 mt-0'>Audition Form</h4>"),
             Field("name", css_class="w-full input-primary"),
             Field("instrument"),
             Field(
