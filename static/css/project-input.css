@@ -112,7 +112,7 @@
 
 @layer components {
   .container {
-    @apply mx-auto max-w-screen-2xl py-8 text-primary-600;
+    @apply mx-auto max-w-screen-2xl px-16 py-8 text-primary-600;
   }
 
   .btn-primary {
@@ -158,5 +158,9 @@
 
   .datepicker button {
     @apply bg-secondary-100! text-primary-600;
+  }
+
+  .boder-test {
+    @apply border-2 border-red-500;
   }
 }
