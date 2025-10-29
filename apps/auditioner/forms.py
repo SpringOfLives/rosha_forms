@@ -5,10 +5,9 @@ from config.mixins import FormMixins
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field, Column, Row
 
-class AuditionerForm(FormMixins, forms.ModelForm): 
 
+class AuditionerForm(FormMixins, forms.ModelForm):
     class Meta:
-
         model = Auditioner
         fields = "__all__"
 
@@ -17,7 +16,7 @@ class AuditionerForm(FormMixins, forms.ModelForm):
             "phone": "Your phone number",
             "instrument": "Musical instrument for performance",
             "email": "Your email",
-            "birthdate": "Birthdate"
+            "birthdate": "Birthdate",
         }
 
     def __init__(self, *args, **kwargs):
@@ -28,7 +27,13 @@ class AuditionerForm(FormMixins, forms.ModelForm):
         self.helper.label_class = "mb-0.5"
         self.helper.layout = Layout(
             HTML("<h5 class='text-primary-700'>{{audition.name|capfirst}} Form</h5>"),
-            Field("name", "nationality", "phone", "email", css_class="w-full input-primary"),
+            Field(
+                "name",
+                "nationality",
+                "phone",
+                "email",
+                css_class="w-full input-primary",
+            ),
             Field("instrument", css_class="w-full input-primary"),
             Field(
                 "birthdate",

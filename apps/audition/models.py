@@ -24,10 +24,15 @@ class Audition(models.Model):
     def __str__(self):
         return f"{self.id} {self.name}"
 
-class Instrument(models.Model):
 
+class Instrument(models.Model):
     name = models.CharField(max_length=100)
-    type = models.CharField(max_length=100, choices=INSTRUMENT_TYPE, default="SOLO", verbose_name="instrument_type")
+    type = models.CharField(
+        max_length=100,
+        choices=INSTRUMENT_TYPE,
+        default="SOLO",
+        verbose_name="instrument_type",
+    )
 
     def __str__(self):
         return f"{self.name} {self.type}"

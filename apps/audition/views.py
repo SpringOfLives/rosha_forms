@@ -1,4 +1,11 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, FormView, DetailView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    FormView,
+    DetailView,
+)
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 
@@ -17,6 +24,7 @@ class AuditionCreateView(CreateView):
     form_class = AuditionForm
     success_url = "/"
 
+
 class AuditionDetailView(DetailView):
     model = Audition
     template_name = "apps/audition/audition_detail.html"
@@ -25,7 +33,7 @@ class AuditionDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["form"] = AuditionerForm()
         return context
-    
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()  # ดึง Audition object ที่เรากำลังดูอยู่
         form = AuditionerForm(request.POST)
@@ -37,6 +45,7 @@ class AuditionDetailView(DetailView):
         context = self.get_context_data()
         context["form"] = form
         return self.render_to_response(context)
+
 
 class AuditionUpdateView: ...
 
