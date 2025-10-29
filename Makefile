@@ -22,6 +22,12 @@ css:
 format:
 	pnpx prettier --write $(file)
 
+djformat:
+	uv run djlint ./templates/ --reformat
+
+lint:
+	uv run djlint ./templates/ --lint $(file)
+
 install: 
 	uv sync
 	pnpm install
