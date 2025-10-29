@@ -1,20 +1,26 @@
 {% load static %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static "css/dist/project.css" %}">
-    <title>{% block title %}{% endblock title %}</title>
-    {% block header %}{% endblock header %}
-  </head>
-  <body class="">
-    {% include "components/navbar.html" %}
-    <section class="container">
-      {% block content %}{% endblock content %} 
-    </section>
-    {% block javascript %}{% endblock javascript %}
-    <script src="{% static "js/flowbite.min.js" %}"></script>
-  </body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="{% static "css/dist/project.css" %}">
+      <title>
+         {% block title %}
+         {% endblock title %}
+      </title>
+      {% block header %}
+      {% endblock header %}
+   </head>
+   <body>
+      {% include "components/navbar.html" %}
+      <section class="container">
+         {% block content %}
+         {% endblock content %}
+      </section>
+      <script src="{% static "js/flowbite.min.js" %}"></script>
+      <script src="{% static "js/simple-datatables.js" %}"></script>
+      {% block javascript %}
+      {% endblock javascript %}
+   </body>
 </html>
