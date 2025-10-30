@@ -12,6 +12,7 @@ urlpatterns = [
     path("auditioner/", include("apps.auditioner.urls")),
     # For testing
     path("", TemplateView.as_view(template_name="base.html")),
+    path("__reload__/", include("django_browser_reload.urls")),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:
