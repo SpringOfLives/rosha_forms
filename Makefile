@@ -23,7 +23,7 @@ format:
 	pnpx prettier --write $(file)
 
 djformat:
-	uv run djlint ./templates/ --reformat
+	uv run djlint ./templates/ --reformat $(file)
 
 lint:
 	uv run djlint ./templates/ --lint $(file)
