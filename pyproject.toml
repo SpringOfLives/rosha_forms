@@ -8,9 +8,16 @@ dependencies = [
     "asgiref==3.8.1",
     "crispy-tailwind==1.0.3",
     "django==5.2",
+    "django-browser-reload>=1.21.0",
     "django-crispy-forms==2.4",
     "django-debug-toolbar==5.1.0",
+    "django-watchfiles>=1.4.0",
+    "djlint>=1.36.4",
     "ipython>=9.6.0",
     "pillow==11.2.1",
     "sqlparse==0.5.3",
 ]
+
+[tool.djlint]
+profile = "django"
+indent = 3

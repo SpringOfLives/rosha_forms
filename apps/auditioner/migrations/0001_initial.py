@@ -6,25 +6,46 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('audition', '0004_alter_audition_name'),
+        ("audition", "0004_alter_audition_name"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Auditioner',
+            name="Auditioner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('birthdate', models.DateField()),
-                ('nationality', models.CharField(max_length=255)),
-                ('phone', models.CharField(max_length=20, validators=[django.core.validators.RegexValidator(regex='^[0-9]')])),
-                ('email', models.EmailField(max_length=254)),
-                ('instrument', models.CharField(max_length=100)),
-                ('audition', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='audition.audition')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("birthdate", models.DateField()),
+                ("nationality", models.CharField(max_length=255)),
+                (
+                    "phone",
+                    models.CharField(
+                        max_length=20,
+                        validators=[
+                            django.core.validators.RegexValidator(regex="^[0-9]")
+                        ],
+                    ),
+                ),
+                ("email", models.EmailField(max_length=254)),
+                ("instrument", models.CharField(max_length=100)),
+                (
+                    "audition",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="audition.audition",
+                    ),
+                ),
             ],
         ),
     ]

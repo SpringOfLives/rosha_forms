@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+   Auditioner - list
+{% endblock title %}
+
+{% block headers %}
+{% endblock headers %}
+{% block content %}
+   <section class="h-full w-full mx-auto">
+      <h6 class="text-center underline-offset-4 underline">Auditioner List</h6>
+      <table id="search-table">
+         <thead>
+            <tr>
+               <th class="bg-secondary-100/80 font-extrabold">
+                  <span class="flex items-center">
+                     Name
+                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                    </svg>
+                  </span>
+               </th>
+               <th class="bg-secondary-100/80 font-extrabold">
+                  <span class="flex items-center">
+                     Age
+                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                    </svg>
+                  </span>
+               </th>
+               <th class="bg-secondary-100/80 font-extrabold">
+                  <span class="flex items-center">
+                     Nationality
+                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                    </svg>
+                  </span>
+               </th>
+               <th class="bg-secondary-100/80 font-extrabold">
+                  <span class="flex items-center">
+                     Email
+                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                    </svg>
+                  </span>
+               </th>
+               <th class="bg-secondary-100/80 font-extrabold">
+                  <span class="flex items-center">
+                     Tel.
+                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                    </svg>
+                  </span>
+               </th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for auditioner in auditioner_list %}
+               <tr>
+                  <td class="font-medium uppercase whitespace-nowrap dark:text-white">{{ auditioner.name }}</td>
+                  <td>{{ auditioner.age }}</td>
+                  <td>{{ auditioner.nationality|capfirst }}</td>
+                  <td>{{ auditioner.email }}</td>
+                  <td>{{ auditioner.phone }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </section>
+{% endblock content %}
+{% block javascript %}
+<script>
+   if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+         const dataTable = new simpleDatatables.DataTable("#search-table", {
+            searchable: true,
+            sortable: true,
+            classes: {
+               
+            }
+    });
+}
+</script>
+{% endblock javascript %}

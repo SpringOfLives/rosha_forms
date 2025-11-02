@@ -4,23 +4,46 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('audition', '0002_remove_audition_annc_date_remove_audition_conc_date_and_more'),
+        (
+            "audition",
+            "0002_remove_audition_annc_date_remove_audition_conc_date_and_more",
+        ),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Instrument',
+            name="Instrument",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('type', models.CharField(choices=[('SOLO', 'Solo'), ('DUO', 'Duo'), ('TRIO', 'Trio'), ('GROUP', 'Group')], default='SOLO', max_length=100, verbose_name='instrument_type')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[
+                            ("SOLO", "Solo"),
+                            ("DUO", "Duo"),
+                            ("TRIO", "Trio"),
+                            ("GROUP", "Group"),
+                        ],
+                        default="SOLO",
+                        max_length=100,
+                        verbose_name="instrument_type",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='audition',
-            name='instrument',
-            field=models.ManyToManyField(to='audition.instrument'),
+            model_name="audition",
+            name="instrument",
+            field=models.ManyToManyField(to="audition.instrument"),
         ),
     ]
