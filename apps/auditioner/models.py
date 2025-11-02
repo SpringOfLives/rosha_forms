@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from apps.audition.models import Audition
+from datetime import date
 
 
 class Auditioner(models.Model):
@@ -13,6 +14,15 @@ class Auditioner(models.Model):
     )
     email = models.EmailField()
     instrument = models.CharField(max_length=100)
+
+    @property
+    def age(self):
+        today = date.today()
+        return (
+            today.year
+            - self.birthdate.year
+            - ((today.month, today.day) < (self.birthdate.month, self.birthdate.day))
+        )
 
     def __str__(self):
         return f"No.{self.id} {self.name}"
