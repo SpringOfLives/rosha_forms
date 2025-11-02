@@ -4,17 +4,18 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="{% static "css/dist/project.css" %}">
+   
+   <link rel="stylesheet" href="{% static "css/dist/project.css" %}">
       <title>
          {% block title %}
          {% endblock title %}
       </title>
-      {% block header %}
-      {% endblock header %}
+      {% block headers %}
+      {% endblock headers %}
    </head>
    <body>
-      {% include "components/navbar.html" %}
       <section class="container">
+         {% include "components/navbar.html" %}
          {% block content %}
          {% endblock content %}
       </section>
