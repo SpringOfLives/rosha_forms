@@ -1,9 +1,6 @@
 from django.views.generic import (
     ListView,
     CreateView,
-    UpdateView,
-    DeleteView,
-    FormView,
     DetailView,
 )
 from django.urls import reverse_lazy
@@ -18,11 +15,27 @@ class AuditionListView(ListView):
     template_name = "apps/audition/audition_list.html"
     model = Audition
 
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     attrs = [a for a in dir(self) if not a.startswith("__")]
+    #     print("Custom attributes/methods of this view:")
+    #     for attr in attrs:
+    #         print("-", attr)
+    #     return queryset
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+
+    #     print("Coontext data keys:", context.keys())
+    #     for key, val in context.items():
+    #         print(f"- {key}: {val}")
+
+    #     return context
+
 
 class AuditionCreateView(CreateView):
     template_name = "apps/audition/audition_form.html"
     form_class = AuditionForm
-    success_url = "/"
+    success_url = reverse_lazy("audition:audition-list")
 
 
 class AuditionDetailView(DetailView):

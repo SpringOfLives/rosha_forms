@@ -23,7 +23,6 @@ class AuditionerForm(FormMixins, forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.helper = FormHelper()
-        self.helper.form_class = "w-full mt-24"
         self.helper.label_class = "mb-0.5"
         self.helper.layout = Layout(
             HTML("<h5 class='text-primary-700'>{{audition.name|capfirst}} Form</h5>"),
