@@ -14,12 +14,14 @@ This guide will help you set up and run the project locally.
 
 Before you begin, ensure you have the following tools installed on your system:
 
-1.  **uv** (Python Package Manager)
+1.  **uv** (Python Package Manager)  
     * Installation Guide: [https://docs.astral.sh/uv/guides/install-python/](https://docs.astral.sh/uv/guides/install-python/)
-2.  **Node.js** (JavaScript Runtime)
+2.  **Node.js** (JavaScript Runtime)  
     * Installation Guide: [https://nodejs.org/en/download](https://nodejs.org/en/download)
-3.  **pnpm** (Fast, Disk Space Efficient Package Manager)
+3.  **pnpm** (Fast, Disk Space Efficient Package Manager)  
     * Installation Guide: [https://pnpm.io/installation](https://pnpm.io/installation)
+
+---
 
 ### 🛠 Installation & Setup
 
@@ -60,3 +62,16 @@ Once all prerequisites are installed, follow these steps to set up and run the p
      ```
 
 You should now be able to access the application in your web browser!
+
+---
+
+## 🧩 Project Status
+
+This project is currently **in active development**.  
+New features, UI improvements, and bug fixes are being added continuously.  
+If you encounter any issues, please make sure you’ve run:
+
+```bash
+make install
+make migrate
+```
