@@ -31,7 +31,7 @@
   --color-secondary-900: oklch(24% 0.04 95);
   --color-secondary-950: oklch(15% 0.025 95);
 
-  --font-roboto: "Roboto", sans-serif; 
+  --font-roboto: "Roboto", sans-serif;
 }
 
 @layer base {
@@ -48,7 +48,7 @@
   button,
   a,
   input {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 ease-linear;
   }
 
   button,
@@ -188,5 +188,9 @@
 
   .border-test {
     @apply border-2 border-red-500;
+  }
+
+  #id_password_helptext {
+    @apply hidden;
   }
 }

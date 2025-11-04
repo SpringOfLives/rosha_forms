@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_tailwind",
     "debug_toolbar",
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,8 @@ MIDDLEWARE = [
     # Django Debug Toolbar
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # Django-Allauth
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -146,6 +150,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+# https://docs.allauth.org/en/latest/installation/quickstart.html#:~:text=AUTHENTICATION_BACKENDS%20%3D%20%5B,%2C%0A%20%20%20%20...%0A%5D
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_SESSION_REMEMBER = False
+
+# Hiding "Remember me?" and its checkbox
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
+
+LOGIN_REDIRECT_URL = "/"
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Django debug toolbar
 
