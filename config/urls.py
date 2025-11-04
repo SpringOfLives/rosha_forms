@@ -13,6 +13,7 @@ urlpatterns = [
     # For testing
     path("", TemplateView.as_view(template_name="base.html")),
     path("__reload__/", include("django_browser_reload.urls")),
+    path("accounts/", include('allauth.urls')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:
