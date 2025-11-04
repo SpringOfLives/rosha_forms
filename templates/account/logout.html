@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% block nav %}{% endblock nav %}
+{% block content %}
+    <div class="container h-screen flex flex-col justify-center items-center gap-y-4">
+        <form method="post" class="w-1/3">
+            <p>Are you sure you want to sign out?'</p>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="grid grid-cols-2 gap-x-8">
+                <button type="submit" class="btn btn-lg mt-4 hover:bg-primary-800 transition-all duration-300 ease-linear text-secondary-200 bg-primary-700 font">Yes</button>
+                <a href="javascript:history.back()" class="btn btn-lg mt-4 hover:bg-primary-800 transition-all duration-300 ease-linear text-secondary-200 bg-primary-700 font">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

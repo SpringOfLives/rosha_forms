@@ -1,5 +1,6 @@
 {% if user.is_authenticated %}
-   <button id="user-menu-button"
+   <div class="flex gap-x-4">
+      <button id="user-menu-button"
            type="button"
            class="flex text-sm rounded md:me-0 focus:bg-primary-700 focus:text-secondary-100 text-primary-700 focus:ring-primary-500 dark:focus:ring-gray-600 cursor-pointer border-2 border-primary-700 ps-1 pe-2.5 py-0.5"
            aria-expanded="false"
@@ -16,13 +17,21 @@
       </svg>
       <div class="self-center font-bold capitalize">{{ request.user.username }}</div>
    </button>
+   <a type="button"
+      href="{% url "account_logout" %}"
+           class="text-secondary-100 bg-primary-700 hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-gray-100 font-extrabold tracking-wide rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2">
+      Log out
+   </a>
+   </div>
 {% else %}
-   <button type="button"
+   <a type="button"
+      href="{% url "account_login" %}"
            class="text-secondary-100 bg-primary-700 hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-gray-100 font-extrabold tracking-wide rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2">
       LOG IN
-   </button>
-   <button type="button"
+   </a>
+   <a type="button"
+      href="{% url "account_signup" %}"
            class="text-secondary-100 bg-primary-700 hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-gray-100 font-extrabold tracking-wide rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
       SIGN UP
-   </button>
+   </a>
 {% endif %}
