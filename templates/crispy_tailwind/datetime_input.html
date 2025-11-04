@@ -21,14 +21,14 @@
                       name="{{ field.name }}_0"
                       autocomplete="off"
                       readonly
-                      class="input-primary input-carlendar dateinput rounded-lg leading-normal px-4 py-2 border-gray-300 focus:outline text-gray-700 appearance-none bg-white border focus:outline-none datepicker-input cursor-pointer"
+                      class="input-primary input-carlendar dateinput rounded-lg leading-normal px-4 py-4 border-gray-300 focus:outline text-gray-700 appearance-none bg-white border focus:outline-none datepicker-input cursor-pointer"
                       datepicker
                       datepicker-title="The Rosha"
                       datepicker-format="d MM yyyy"
                       datepicker-buttons
                       value="{{ field.value|date:"d F Y" }}">
-               <div class="absolute end-4 bottom-2.5 flex items-center justify-center pointer-events-none">
-                  <svg class="size-5 text-primary-700 dark:text-gray-400"
+               <div class="absolute end-4 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                  <svg class="size-6 text-primary-700 dark:text-gray-400"
                        aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24"
@@ -44,7 +44,7 @@
                       type="time"
                       value="{{ field.value|date:"H:i" }}"
                       name="{{ field.name }}_1"
-                      class="input-primary input-carlendar dateinput rounded-lg px-4 leading-normal py-2 border-gray-300 focus:outline text-gray-700 appearance-none bg-white border focus:outline-none datepicker-input cursor-auto"
+                      class="input-primary input-carlendar dateinput rounded-lg px-4 leading-normal py-4 border-gray-300 focus:outline text-gray-700 appearance-none bg-white border focus:outline-none datepicker-input cursor-auto"
                       autocomplete="off">
             </div>
          </div>

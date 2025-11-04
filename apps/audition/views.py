@@ -2,6 +2,8 @@ from django.views.generic import (
     ListView,
     CreateView,
     DetailView,
+    UpdateView,
+    DeleteView
 )
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -15,23 +17,6 @@ class AuditionListView(ListView):
     template_name = "apps/audition/audition_list.html"
     model = Audition
 
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     attrs = [a for a in dir(self) if not a.startswith("__")]
-    #     print("Custom attributes/methods of this view:")
-    #     for attr in attrs:
-    #         print("-", attr)
-    #     return queryset
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-
-    #     print("Coontext data keys:", context.keys())
-    #     for key, val in context.items():
-    #         print(f"- {key}: {val}")
-
-    #     return context
-
-
 class AuditionCreateView(CreateView):
     template_name = "apps/audition/audition_form.html"
     form_class = AuditionForm
@@ -42,25 +27,19 @@ class AuditionDetailView(DetailView):
     model = Audition
     template_name = "apps/audition/audition_detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = AuditionerForm()
-        return context
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()  # ดึง Audition object ที่เรากำลังดูอยู่
-        form = AuditionerForm(request.POST)
-        if form.is_valid():
-            auditioner = form.save(commit=False)
-            auditioner.audition = self.object
-            auditioner.save()
-            return redirect(self.request.path)
-        context = self.get_context_data()
-        context["form"] = form
-        return self.render_to_response(context)
+class AuditionUpdateView(UpdateView):
+    model = Audition
+    form_class = AuditionForm
+    template_name = 'apps/audition/audition_form.html'
+    
+    def get_success_url(self):
+        return reverse_lazy('audition:audition-detail', kwargs={"pk": self.get_object().id})
 
 
-class AuditionUpdateView: ...
+class AuditionDeleteView(DeleteView):
+    model = Audition
+    success_url = reverse_lazy("audition:audition-list")
 
-
-class AuditionDeleteView: ...
+    """Overide get method for Creating DeleteView without templates_name"""
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)

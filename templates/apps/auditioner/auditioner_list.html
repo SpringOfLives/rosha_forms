@@ -4,81 +4,148 @@
 {% block title %}
    Auditioner - list
 {% endblock title %}
-
-{% block headers %}
-{% endblock headers %}
 {% block content %}
-   <section class="h-full w-full mx-auto">
-      <h6 class="text-center underline-offset-4 underline">Auditioner List</h6>
+   <section class="mx-auto h-full w-full">
+      <h6 class="text-center underline underline-offset-4">Auditioner List</h6>
       <table id="search-table">
          <thead>
             <tr>
                <th class="bg-secondary-100/80 font-extrabold">
                   <span class="flex items-center">
                      Name
-                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>
+                     <svg class="ms-1 h-4 w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                     </svg>
                   </span>
                </th>
                <th class="bg-secondary-100/80 font-extrabold">
                   <span class="flex items-center">
                      Age
-                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>
+                     <svg class="ms-1 h-4 w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                     </svg>
                   </span>
                </th>
                <th class="bg-secondary-100/80 font-extrabold">
                   <span class="flex items-center">
                      Nationality
-                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>
+                     <svg class="ms-1 h-4 w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                     </svg>
                   </span>
                </th>
                <th class="bg-secondary-100/80 font-extrabold">
                   <span class="flex items-center">
                      Email
-                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>
+                     <svg class="ms-1 h-4 w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                     </svg>
                   </span>
                </th>
                <th class="bg-secondary-100/80 font-extrabold">
                   <span class="flex items-center">
                      Tel.
-                     <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>
+                     <svg class="ms-1 h-4 w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                     </svg>
                   </span>
                </th>
+               <th class="bg-secondary-100/80 font-extrabold"></th>
+               <th class="bg-secondary-100/80 font-extrabold"></th>
             </tr>
          </thead>
          <tbody>
             {% for auditioner in auditioner_list %}
                <tr>
-                  <td class="font-medium uppercase whitespace-nowrap dark:text-white">{{ auditioner.name }}</td>
+                  <td class="font-medium whitespace-nowrap uppercase dark:text-white">{{ auditioner.name }}</td>
                   <td>{{ auditioner.age }}</td>
                   <td>{{ auditioner.nationality|capfirst }}</td>
                   <td>{{ auditioner.email }}</td>
                   <td>{{ auditioner.phone }}</td>
+                  <td>
+                     <a href="{% url "auditioner:auditioner-update" auditioner.id %}"
+                        class="flex w-full items-center justify-center gap-x-2 px-5 rounded-lg border bg-primary-600 border-primary-600 py-2.5 text-sm font-medium text-white hover:bg-primary-700 cursor-pointer focus:outline-none sm:mt-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <svg class="mb-0.5 size-4.5 text-white dark:text-white"
+                             aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg"
+                             width="24"
+                             height="24"
+                             fill="none"
+                             viewBox="0 0 24 24">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4.988 19.012 5.41-5.41m2.366-6.424 4.058 4.058-2.03 5.41L5.3 20 4 18.701l3.355-9.494 5.41-2.029Zm4.626 4.625L12.197 6.61 14.807 4 20 9.194l-2.61 2.61Z" />
+                        </svg>
+                        Edit
+                     </a>
+                  </td>
+                  <td>
+                     <a data-modal-target="delete-modal-{{ forloop.counter }}"
+                        data-modal-toggle="delete-modal-{{ forloop.counter }}"
+                        class="mt-4 flex items-center justify-center gap-x-2 rounded-lg borderw bg-red-700 border-red-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-800 hover:text-secondary-50 focus:outline-none cursor-pointer sm:mt-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        role="button">
+                        <svg class="mb-0.5 size-4.5 text-white dark:text-white"
+                             aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg"
+                             width="24"
+                             height="24"
+                             fill="currentColor"
+                             viewBox="0 0 24 24">
+                           <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm5.757-1a1 1 0 1 0 0 2h8.486a1 1 0 1 0 0-2H7.757Z" clip-rule="evenodd" />
+                        </svg>
+                     Delete</a>
+                  </td>
                </tr>
             {% endfor %}
          </tbody>
       </table>
    </section>
 {% endblock content %}
+{% block modal %}
+  {% for auditioner in auditioner_list %}
+    {% url 'auditioner:auditioner-delete' auditioner.id as delete_url %}
+    {% include "components/delete_modal.html" with modal_id=forloop.counter obj_name=auditioner.name url=delete_url %}
+  {% endfor %}
+{% endblock modal %}
 {% block javascript %}
-<script>
-   if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-         const dataTable = new simpleDatatables.DataTable("#search-table", {
-            searchable: true,
-            sortable: true,
-            classes: {
-               
-            }
+   <script>
+  if (
+    document.getElementById("search-table") &&
+    typeof simpleDatatables.DataTable !== "undefined"
+  ) {
+    const dataTable = new simpleDatatables.DataTable("#search-table", {
+      searchable: true,
+      sortable: true,
+      classes: {},
     });
-}
-</script>
+  }
+   </script>
 {% endblock javascript %}

@@ -1,2 +1,5 @@
-.{% load crispy_forms_tags %}
-<div id="registerForm" class="mt-24">{% crispy form %}</div>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+   <div class="mt-24">{% crispy form %}</div>
+{% endblock content %}

@@ -7,7 +7,7 @@
 {% block content %}
    <section class="h-full w-full mx-auto mt-12">
       <h6 class="text-center underline-offset-4 underline">Our Auditions</h6>
-      <div class="mt-12 grid grid-cols-4 gap-x-8">
+      <div class="mt-12 grid grid-cols-3 gap-x-8">
          {% for audition in audition_list %}
             <div class="relative text-center h-full hover:brightness-90 hover:shadow-lg shadow-secondary-500 cursor-pointer transition-all duration-500">
                <img src="{{ audition.poster.url }}" class="object-cover h-fit ">
