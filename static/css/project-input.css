@@ -48,7 +48,7 @@
   button,
   a,
   input {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 ease-linear;
   }
 
   button,
