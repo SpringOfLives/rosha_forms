@@ -3,7 +3,7 @@
    {{ field }}
 {% else %}
    {# Opening Div and Label first #}
-   <div class="flex flex-col w-full">
+   <div class="flex w-full flex-col">
       {% if field.label and form_show_labels %}
          <label for="{{ field.id_for_label }}"
                 class="{% if label_class %}{{ label_class }}{% endif %}">
@@ -11,14 +11,38 @@
             {% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
          </label>
       {% endif %}
-      <div id="div_{{ field.auto_id }}"
-           class=" {% if wrapper_class %}{{ wrapper_class }}{% endif %} {% if field_class %} {{ field_class }} {% else %} space-y-2 {% endif %} relative">
-         {# otherwise use django rendering with additional classes added #}
-         <input id="id_{{ field.name }}"
-                name="{{ field.name }}"
-                type="file"
-                class="input-primary text-base block file:bg-primary-700 file:text-white file:px-4 file:py-2 file:me-4 w-full border border-gray-300 rounded-lg dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-         {% include 'tailwind/layout/help_text_and_errors.html' %}
+      <div class="flex flex-col gap-y-2.5 pe-12">
+         <!-- File Input -->
+         <label class="{% if wrapper_class %}{{ wrapper_class }}{% endif %} {% if field_class %} {{ field_class }} {% else %}{% endif %} relative">
+            <svg class="mb-1 size-6"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 fill="none"
+                 viewBox="0 0 24 24">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4" />
+            </svg>
+            <span id="file-label">{{ form.name.value }} poster</span>
+            <!-- ชื่อไฟล์เดิมจากฐานข้อมูล -->
+            <input type="file" name="{{ field.name }}" class="hidden" id="file-input" />
+            {% include 'tailwind/layout/help_text_and_errors.html' %}
+         </label>
+         <!-- Optional: show file preview -->
+         <p class="text-sm text-gray-500">If you upload a new file, it will replace the current one.</p>
       </div>
    </div>
 {% endif %}
+<script>
+  const input = document.getElementById("file-input");
+  const label = document.getElementById("file-label");
+  console.log(input.files.length)
+
+  input.addEventListener("change", () => {
+    if (input.files.length > 0) {
+      label.textContent = input.files[0].name;
+    } else {
+      label.textContent = "poster";
+    }
+  });
+</script>

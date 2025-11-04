@@ -40,8 +40,14 @@ class AuditionForm(FormMixins, forms.ModelForm):
         self.helper.form_class = "w-4/5"
         self.helper.label_class = "mb-0.5"
         self.helper.layout = Layout(
-            HTML("<h4 class='text-primary-700 mt-0'>Audition Form</h4>"),
-            Field("name", css_class="w-full input-primary"),
+            HTML("""<h6 class='text-primary-700 mt-0 text-3xl tracking-wide capitalize'>
+                 {% if form.instance.pk %}
+                    {{audition.name}}
+                     <small class='text-sm lowercase'>&emsp;[edit mode]</small>
+                {% else %}
+                    Create Form
+                {% endif %}</h6>"""),
+            Field("name", css_class="w-full input-primary py-4"),
             Field("instrument"),
             Field(
                 "deadline",
@@ -49,6 +55,6 @@ class AuditionForm(FormMixins, forms.ModelForm):
                 "conc_dt",
                 template="crispy_tailwind/datetime_input.html",
             ),
-            Field("poster", template="crispy_tailwind/file_input.html"),
-            Submit("submit", "Submit", css_class="button btn-primary mt-8 mx-auto"),
+            Field("poster", template="crispy_tailwind/file_input.html", wrapper_class="cursor-pointer bg-secondary-200/50 hover:bg-secondary-200 text-primaty-600 font-semibold px-6 py-3 rounded-lg shadow-sm transition flex justify-center items-center gap-2 w-1/2 transition duration-500 ease-linear"),
+            Submit("submit", "Submit", css_class="button btn-primary mt-40 text-base w-1/4"),
         )

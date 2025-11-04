@@ -25,18 +25,20 @@ class AuditionerForm(FormMixins, forms.ModelForm):
         self.helper = FormHelper()
         self.helper.label_class = "mb-0.5"
         self.helper.layout = Layout(
-            HTML("<h5 class='text-primary-700'>{{audition.name|capfirst}} Form</h5>"),
-            Field(
+            HTML("<h6 class='text-primary-700 capitalize'>{% if not form.instance.pk %}{{audition_name}} Form{% endif %}</h6>"),Field(
                 "name",
+                css_class="w-full input-primary",
+            ),
+            Field(
+                "birthdate",
+                template="crispy_tailwind/date_input.html",
+            ),
+            Field(
                 "nationality",
                 "phone",
                 "email",
                 css_class="w-full input-primary",
             ),
             Field("instrument", css_class="w-full input-primary"),
-            Field(
-                "birthdate",
-                template="crispy_tailwind/date_input.html",
-            ),
-            Submit("submit", "Submit", css_class="button btn-primary mt-8 mx-auto"),
+            Submit("submit", "Submit", css_class="button w-1/4 text-base btn-primary mt-40"),
         )
