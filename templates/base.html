@@ -14,7 +14,9 @@
    </head>
    <body>
       <section class="container">
-         {% include "components/navbar.html" %}
+         {% block nav %}
+            {% include "components/navbar.html" %}
+         {% endblock nav %}
          {% block content %}
          {% endblock content %}
          {% block modal %}
