@@ -6,18 +6,17 @@ from django.views.generic import (
     DeleteView
 )
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
 
 from .forms import AuditionForm
-from apps.auditioner.forms import AuditionerForm
 from .models import Audition
+from config.mixins import StaffRequiredMixin
 
 
 class AuditionListView(ListView):
     template_name = "apps/audition/audition_list.html"
     model = Audition
 
-class AuditionCreateView(CreateView):
+class AuditionCreateView(StaffRequiredMixin, CreateView):
     template_name = "apps/audition/audition_form.html"
     form_class = AuditionForm
     success_url = reverse_lazy("audition:audition-list")
@@ -27,7 +26,7 @@ class AuditionDetailView(DetailView):
     model = Audition
     template_name = "apps/audition/audition_detail.html"
 
-class AuditionUpdateView(UpdateView):
+class AuditionUpdateView(StaffRequiredMixin, UpdateView):
     model = Audition
     form_class = AuditionForm
     template_name = 'apps/audition/audition_form.html'
@@ -36,7 +35,7 @@ class AuditionUpdateView(UpdateView):
         return reverse_lazy('audition:audition-detail', kwargs={"pk": self.get_object().id})
 
 
-class AuditionDeleteView(DeleteView):
+class AuditionDeleteView(StaffRequiredMixin, DeleteView):
     model = Audition
     success_url = reverse_lazy("audition:audition-list")
 
