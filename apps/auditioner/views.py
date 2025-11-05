@@ -6,19 +6,21 @@ from django.views.generic import (
     DeleteView
 )
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import AuditionerForm
 from .models import Auditioner
 from apps.audition.models import Audition
+from config.mixins import StaffRequiredMixin, UserObjectPermissionMixin
 
 
-class AuditionerListView(ListView):
+class AuditionerListView(StaffRequiredMixin, ListView):
    template_name = "apps/auditioner/auditioner_list.html"
    model = Auditioner
 
 
-class AuditionerCreateView(CreateView):
+class AuditionerCreateView(LoginRequiredMixin, CreateView):
     model = Auditioner
     form_class = AuditionerForm
     template_name = 'apps/auditioner/auditioner_form.html'
@@ -34,18 +36,19 @@ class AuditionerCreateView(CreateView):
         audition_id = self.kwargs.get('pk')
         audition = get_object_or_404(Audition, id=audition_id)
         form.instance.audition = audition
+        form.instance.user = self.request.user
 
         return super().form_valid(form)
 
 
-class AuditionerUpdateView(UpdateView):
+class AuditionerUpdateView(UserObjectPermissionMixin, UpdateView):
     model = Auditioner
     form_class = AuditionerForm
     template_name = 'apps/auditioner/auditioner_form.html'
     success_url = reverse_lazy("auditioner:auditioner-list")
 
 
-class AuditionerDeleteView(DeleteView):
+class AuditionerDeleteView(UserObjectPermissionMixin, DeleteView):
     model = Auditioner
     success_url = reverse_lazy("auditioner:auditioner-list")
 

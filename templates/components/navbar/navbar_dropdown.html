@@ -1,0 +1,32 @@
+<div class="z-50 hidden my-4 text-base list-non rounded-lg dark:bg-gray-700 dark:divide-gray-600 min-w-[175px]"
+     id="user-dropdown">
+   <div class="{% if not user.is_staff %}hidden {% endif %}flex justify-center items-center px-4 py-3 bg-primary-700 shadow-md rounded-lg mb-2.5">
+      <span class="text-sm font-medium truncate text-secondary-50 dark:text-gray-400">
+         {% if user.is_superuser %}
+            Status: Admin
+         {% elif user.is_staff %}
+            Status: Staffz
+         {% else %}
+            Status: Active
+         {% endif %}
+      </span>
+   </div>
+   <ul class="rounded-lg bg-secondary-100 shadow-sm"
+       aria-labelledby="user-menu-button">
+      {% if user.is_staff %}
+         <li>
+            <a href="{% url "audition:audition-form" %}"
+               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-secondary-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Creating Audition Form</a>
+         </li>
+      {% endif %}
+      <li>
+         <a href="{% url "audition:audition-list" %}"
+            class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-secondary-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Audition List</a>
+      </li>
+      <li>
+         <a href="{% url "account_logout" %}"
+            class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-secondary-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+         Out</a>
+      </li>
+   </ul>
+</div>

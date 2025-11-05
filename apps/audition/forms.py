@@ -39,14 +39,11 @@ class AuditionForm(FormMixins, forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_class = "w-4/5"
         self.helper.label_class = "mb-0.5"
+        submit_text = "Update" if self.instance.pk else "Submit"
+        
         self.helper.layout = Layout(
-            HTML("""<h6 class='text-primary-700 mt-0 text-3xl tracking-wide capitalize'>
-                 {% if form.instance.pk %}
-                    {{audition.name}}
-                     <small class='text-sm lowercase'>&emsp;[edit mode]</small>
-                {% else %}
-                    Create Form
-                {% endif %}</h6>"""),
+            HTML("""<h4 class='text-primary-700 underline capitalize{% if not form.instance.pk %} mb-20{% else %} mb-6{% endif %}'>{% if not form.instance.pk %}Create Audition Form{% else %} Update Audition{% endif %}</h4>
+                    {% if form.instance.pk %}<h6 class='text-primary-700 mb-20'>{{ audition.name }}</h6>{% endif %}"""),
             Field("name", css_class="w-full input-primary py-4"),
             Field("instrument"),
             Field(
@@ -56,5 +53,6 @@ class AuditionForm(FormMixins, forms.ModelForm):
                 template="crispy_tailwind/datetime_input.html",
             ),
             Field("poster", template="crispy_tailwind/file_input.html", wrapper_class="cursor-pointer bg-secondary-200/50 hover:bg-secondary-200 text-primaty-600 font-semibold px-6 py-3 rounded-lg shadow-sm transition flex justify-center items-center gap-2 w-1/2 transition duration-500 ease-linear"),
-            Submit("submit", "Submit", css_class="button btn-primary mt-40 text-base w-1/4"),
+            
+            Submit("submit", submit_text, css_class="btn btn-primary btn-xl w-1/4 mx-auto mt-32"),
         )
