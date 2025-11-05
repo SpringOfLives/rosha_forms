@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "flowbite/plugin";
@@ -32,12 +33,13 @@
   --color-secondary-950: oklch(15% 0.025 95);
 
   --font-roboto: "Roboto", sans-serif;
+  --font-cabin: "Cabin", sans-serif;
 }
 
 @layer base {
 
   html {
-    @apply scroll-smooth font-roboto;
+    @apply scroll-smooth font-cabin;
   }
 
   body {
