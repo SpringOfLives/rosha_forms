@@ -12,10 +12,29 @@
             <div class="flex flex-col gap-y-4">
                <div class="relative text-center h-full hover:brightness-95 hover:shadow-lg shadow-secondary-500 cursor-pointer transition-all duration-500">
                   <img src="{{ audition.poster.url }}" class="object-cover h-full">
-               <a href="{% url "audition:audition-detail" audition.id %}"
-                  class="absolute inset-0"></a>
+                  <a href="{% url "audition:audition-detail" audition.id %}"
+                     class="absolute inset-0"></a>
+               </div>
+                  <div class="grid{% if user.is_staff %} grid-cols-3 {% else %} grid-cols-1 {% endif %} gap-x-4 justify-center items-center">
+                     <a href="{% url "audition:audition-detail" audition.id %}"
+                        class="btn-primary btn btn-lg text-center{% if not user.is_staff %} w-full{% endif %}">Detail</a>
+                     {% if user.is_staff %}
+                     <a href="{% url "audition:audition-update" audition.id %}?next={{ request.path }}"
+                        class="btn-primary btn btn-lg text-center">Edit</a>
+                     <a data-modal-target="delete-modal-{{ forloop.counter }}"
+                        data-modal-toggle="delete-modal-{{ forloop.counter }}"
+                        class="mt-4 flex items-center justify-center gap-x-2 rounded-lg borderw bg-red-700 border-red-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-800 hover:text-secondary-50 focus:outline-none cursor-pointer sm:mt-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        role="button">Delete</a>
+                     {% endif %}
+                  </div>
             </div>
          {% endfor %}
       </div>
    </section>
 {% endblock content %}
+{% block modal %}
+   {% for audition in audition_list %}
+      {% url 'audition:audition-delete' audition.id as delete_url %}
+      {% include "components/delete_modal.html" with modal_id=forloop.counter obj_name=audition.name url=delete_url %}
+   {% endfor %}
+{% endblock modal %}
