@@ -87,7 +87,7 @@
          <tbody>
             {% for auditioner in auditioner_list %}
                <tr>
-                  <td class="font-medium whitespace-nowrap uppercase dark:text-white">{{ auditioner.name }}</td>
+                  <td class="font-medium whitespace-nowrap capitalize dark:text-white">{{ auditioner.name }}</td>
                   <td>{{ auditioner.age }}</td>
                   <td>{{ auditioner.nationality|capfirst }}</td>
                   <td>{{ auditioner.email }}</td>
