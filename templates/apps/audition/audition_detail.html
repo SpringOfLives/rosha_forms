@@ -99,8 +99,8 @@
                </a>
             </div>
             <div class="w-fit mt-4 sm:flex sm:items-center sm:gap-4">
-               <button data-modal-target="delete-modal-{{audition.id}}"
-                       data-modal-toggle="delete-modal-{{audition.id}}"
+               <button data-modal-target="delete-modal-{{ audition.id }}"
+                       data-modal-toggle="delete-modal-{{ audition.id }}"
                        class="mt-4 flex items-center justify-center gap-x-2 rounded-lg bg-red-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-800 focus:ring-4 focus:ring-primary-300 focus:outline-none sm:mt-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                        role="button">
                   <svg class="mb-0.5 size-4.5 text-white dark:text-white"
@@ -119,8 +119,7 @@
       </div>
    </section>
 {% endblock content %}
-   
 {% block modal %}
-    {% url 'audition:audition-delete' audition.id as delete_url %}
-    {% include "components/delete_modal.html" with modal_id=audition.id obj_name=audition.name url=delete_url %}
+   {% url 'audition:audition-delete' audition.id as delete_url %}
+   {% include "components/delete_modal.html" with modal_id=audition.id obj_name=audition.name url=delete_url %}
 {% endblock modal %}

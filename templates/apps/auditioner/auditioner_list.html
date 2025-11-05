@@ -130,10 +130,10 @@
    </section>
 {% endblock content %}
 {% block modal %}
-  {% for auditioner in auditioner_list %}
-    {% url 'auditioner:auditioner-delete' auditioner.id as delete_url %}
-    {% include "components/delete_modal.html" with modal_id=forloop.counter obj_name=auditioner.name url=delete_url %}
-  {% endfor %}
+   {% for auditioner in auditioner_list %}
+      {% url 'auditioner:auditioner-delete' auditioner.id as delete_url %}
+      {% include "components/delete_modal.html" with modal_id=forloop.counter obj_name=auditioner.name url=delete_url %}
+   {% endfor %}
 {% endblock modal %}
 {% block javascript %}
    <script>
