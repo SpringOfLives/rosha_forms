@@ -58,7 +58,7 @@ Once all prerequisites are installed, follow these steps to set up and run the p
 5. **Run the Server**
    * This command starts the project server:
      ```bash
-     make start
+     make run
      ```
 
 You should now be able to access the application in your web browser!

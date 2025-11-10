@@ -1,5 +1,6 @@
-start:
+run:
 	uv run python manage.py runserver $(port)
+	Watching for file change WatchFilesReload
 
 migrations:
 	uv run python manage.py makemigrations $(app_name)
