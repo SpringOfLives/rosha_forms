@@ -10,6 +10,43 @@ from crispy_forms.layout import Layout, Submit, HTML, Field
 
 
 class AuditionForm(FormMixins, forms.ModelForm):
+    # ฟอร์มสำหรับ Age
+    age_limit_type = forms.ChoiceField(
+        choices=[
+            ('Min', 'อายุต่ำสุด'),
+            ('Max', 'อายุสูงสุด'),
+        ],
+        widget=forms.RadioSelect,
+        required=False,
+        label="ประเภทของอายุ"
+    )
+
+    age_years = forms.IntegerField(
+        required=False,
+        label="จำนวนปี"
+    )
+
+    # ✅ ฟอร์มสำหรับ Complex_Class
+    class_category = forms.CharField(
+        required=False,
+        label="หมวดหมู่คลาส"
+    )
+    class_name = forms.CharField(
+        required=False,
+        label="ชื่อคลาส"
+    )
+    min_age_years = forms.IntegerField(
+        required=False,
+        label="อายุต่ำสุด (ปี)"
+    )
+    max_age_years = forms.IntegerField(
+        required=False,
+        label="อายุสูงสุด (ปี)"
+    )
+    is_group = forms.BooleanField(
+        required=False,
+        label="เป็นกลุ่มหรือไม่"
+    )
     class Meta:
         model = Audition
 
@@ -56,3 +93,30 @@ class AuditionForm(FormMixins, forms.ModelForm):
             
             Submit("submit", submit_text, css_class="btn btn-primary btn-xl w-1/4 mx-auto mt-32"),
         )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        eligibility_type = cleaned_data.get("eligibility_type")
+
+        if eligibility_type == "Age":
+            self.instance.eligibility_criteria = {
+                "eligibility_type": cleaned_data.get("eligibility_type"),
+                "age_limit_type": cleaned_data.get("age_limit_type"),
+                "age_years": cleaned_data.get("age_years"),
+            }
+
+        elif eligibility_type == "Complex_Class":
+            self.instance.eligibility_criteria = {
+                "eligibility_type": "Complex_Class",
+                "classes": [
+                    {
+                        "category": cleaned_data.get("class_category"),
+                        "class_name": cleaned_data.get("class_name"),
+                        "min_age_years": cleaned_data.get("min_age_years"),
+                        "max_age_years": cleaned_data.get("max_age_years"),
+                        "is_group": cleaned_data.get("is_group"),
+                    }
+                ],
+            }
+
+        return cleaned_data

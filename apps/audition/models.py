@@ -7,6 +7,7 @@ class Audition(models.Model):
     """
     annc stands for annoucement
     conc stands for concert
+    elig_crit stands for eligility criteria
     dt stands for date
     """
 
@@ -18,6 +19,7 @@ class Audition(models.Model):
     conc_dt = models.DateTimeField(
         "concert", null=True, blank=True, default=datetime_default
     )
+    elig_crit = models.JSONField(default=dict)
     poster = models.ImageField(upload_to="audition/posters/")
     instrument = models.ManyToManyField("Instrument")
 
