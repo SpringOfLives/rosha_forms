@@ -4,5 +4,58 @@
    Audition - form
 {% endblock title %}
 {% block content %}
-   <div class="container mt-16">{% crispy form %}</div>
+   <div class="container mt-16">{% if form.errors %}
+      <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+        <strong>พบข้อผิดพลาด!</strong>
+        <ul class="list-disc list-inside mt-2">
+          {% for field in form %}
+            {% for error in field.errors %}
+              <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+              <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}{% crispy form %}</div>
 {% endblock content %}
+
+{% block javascript %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const eligTypeRadios = document.querySelectorAll('input[name="elig_type"]');
+    const ageForm = document.getElementById("age_form");
+    const complexForm = document.getElementById("complx_form");
+
+    function toggleForms() {
+        const selected = document.querySelector('input[name="elig_type"]:checked');
+        if (!selected) {
+            ageForm.classList.add("hidden");
+            complexForm.classList.add("hidden");
+            return;
+        }
+
+        if (selected.value === "AGE_FORM") {
+            ageForm.classList.remove("hidden");
+            complexForm.classList.add("hidden");
+        } else if (selected.value === "CLASS_FORM") {
+            complexForm.classList.remove("hidden");
+            ageForm.classList.add("hidden");
+        } else {
+            ageForm.classList.add("hidden");
+            complexForm.classList.add("hidden");
+        }
+    }
+
+    // ถ้ามีค่าเลือกไว้ (ตอนแก้ไขฟอร์ม) ให้โชว์ถูกอัน
+    toggleForms();
+
+    // เมื่อเปลี่ยน radio ให้สลับฟอร์ม
+    eligTypeRadios.forEach(radio => {
+        radio.addEventListener("change", toggleForms);
+    });
+});
+</script>
+
+{% endblock javascript %}
