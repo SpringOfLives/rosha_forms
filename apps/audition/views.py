@@ -7,7 +7,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 
-from .forms import AuditionForm
+from .forms.forms import AuditionForm, ComplexClassEligibilityForm
 from .models import Audition
 from config.mixins import StaffRequiredMixin
 
@@ -20,7 +20,6 @@ class AuditionCreateView(StaffRequiredMixin, CreateView):
     template_name = "apps/audition/audition_form.html"
     form_class = AuditionForm
     success_url = reverse_lazy("audition:audition-list")
-
 
 class AuditionDetailView(DetailView):
     model = Audition

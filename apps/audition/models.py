@@ -19,7 +19,7 @@ class Audition(models.Model):
     conc_dt = models.DateTimeField(
         "concert", null=True, blank=True, default=datetime_default
     )
-    elig_crit = models.JSONField(default=dict)
+    elig_crit = models.JSONField(default=dict, blank=True)
     poster = models.ImageField(upload_to="audition/posters/")
     instrument = models.ManyToManyField("Instrument")
 
