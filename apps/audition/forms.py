@@ -82,6 +82,7 @@ class AuditionForm(FormMixins, forms.ModelForm):
             HTML("""<h4 class='text-primary-700 underline capitalize{% if not form.instance.pk %} mb-20{% else %} mb-6{% endif %}'>{% if not form.instance.pk %}Create Audition Form{% else %} Update Audition{% endif %}</h4>
                     {% if form.instance.pk %}<h6 class='text-primary-700 mb-20'>{{ audition.name }}</h6>{% endif %}"""),
             Field("name", css_class="w-full input-primary py-4"),
+            Field("elig_type", template="audition/layout/radioselect.html"),
             Field("instrument"),
             Field(
                 "deadline",

@@ -1,0 +1,52 @@
+{% comment %} 
+<div class="flex items-center ps-4 border border-gray-200 rounded-sm dark:border-gray-700">
+    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default radio</label>
+</div>
+<div class="flex items-center ps-4 border border-gray-200 rounded-sm dark:border-gray-700">
+    <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="bordered-checkbox-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
+</div> {% endcomment %}
+{% load crispy_forms_filters %}
+{% load l10n %}
+
+
+{% load tailwind_field %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    {# Opening Div and Label first #}
+
+<{% if tag %}{{ tag }}{% else %}div{% endif %} id="div_{{ field.auto_id }}" class="{% if wrapper_class %}{{ wrapper_class }} {% endif %}{% if field_class %}{{ field_class }}{% else %}mb-3{% endif %}">
+    {% if field.label and form_show_labels %}
+        <label for="{{ field.id_for_label }}" class="{% if label_class %}{{ label_class }}{% else %}block text-gray-700 text-sm font-bold mb-2{% endif %}">
+            {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+    {% endif %}
+
+    {# if field has a special template then use this #}
+    {% if field|is_radioselect %}
+        <div class="flex"{% if flat_attrs %} {{ flat_attrs|safe }}{% endif %}>
+            {% for choice in field.field.choices %}
+            <div class="flex items-center border border-gray-200 rounded-sm dark:border-gray-700">
+                <label for="id_{{ field.html_name }}_{{ forloop.counter }}" class="{% if css_container.option_label %}{{ css_container.option_label }}{% else %}w-full py-4 text-sm font-medium text-primary-700 dark:text-gray-300{% endif %} mr-3">
+                    <input type="radio" class="{{ css_container.radioselect }}"{% if choice.0|stringformat:"s" == field.value|default_if_none:""|stringformat:"s" %} checked="checked"{% endif %} name="{{ field.html_name }}" id="id_{{ field.html_name }}_{{ forloop.counter }}" value="{{ choice.0|unlocalize }}" {{ field.field.widget.attrs|flatatt }}>
+                    {{ choice.1|unlocalize }}
+                </label>
+            </div>
+                {% if field.errors and forloop.last %}
+                    {# include 'tailwind/layout/field_errors_block.html'  <-- bs4 template adds this here. Currently this pack adds it in field.html #}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        {# otherwise use django rendering with additional classes added #}
+        {% tailwind_field field %}
+    {% endif %}
+
+    {% include 'tailwind/layout/help_text_and_errors.html' %}
+
+    </{% if tag %}{{ tag }}{% else %}div{% endif %}>
+
+{% endif %}
